@@ -1,0 +1,74 @@
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+    - make
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    ldflags:
+      - '-s -w'
+      - '-X github.com/GTNH-SteamAge/PackPatcher/internal.Version={{ .Env.version }}'
+      - '-X github.com/GTNH-SteamAge/PackPatcher/internal.Branch={{ .Env.branch }}'
+      - '-X github.com/GTNH-SteamAge/PackPatcher/internal.Commit={{ .Env.commit }}'
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    ignore:
+      - goos: windows
+        goarch: arm64
+
+release:
+  github:
+    owner: GTNH-SteamAge
+    name: PackPatcher
+  draft: false
+
+nfpms:
+  - package_name: packpatcher
+    vendor: Serenibyss
+    homepage: github.com/GTNH-SteamAge/PackPatcher
+    maintainer: Serenibyss <serenibyss@gmail.com>
+    description: Patch assembler for the Steam Age patch for the GTNH modpack
+    formats:
+      - deb
+      - rpm
+    # Name template result:
+    # packpatcher-1.0.0.aarch64.rpm
+    # packpatcher-1.0.0.x86_64.rpm
+    # packpatcher_1.0.0_arm64.deb
+    # packpatcher_1.0.0_amd64.deb
+    file_name_template: >-
+      {{- if eq .ConventionalExtension ".deb" }}
+        {{- .PackageName }}_{{ .Env.version }}_{{ .Arch }}
+      {{- else if eq .ConventionalExtension ".rpm" }}
+        {{- .PackageName }}-{{ .Env.version }}.
+        {{- if eq .Arch "amd64" }}x86_64
+        {{- else if eq .Arch "arm64" }}aarch64
+        {{- else }}{{ .Arch }}{{ end }}
+      {{- end }}
+      {{- .ConventionalExtension }}
+
+archives:
+  - format: tar.gz
+    name_template: >-
+      {{ .ProjectName }}-{{ .Env.version }}-{{- tolower .Os }}-
+      {{- if eq .Arch "amd64" }}x86_64{{- else }}{{ .Arch }}{{ end }}
+    format_overrides:
+      - goos: windows
+        format: zip
+      - goos: darwin
+        format: zip
+
+checksum:
+  name_template: '{{ .ProjectName }}-checksums.txt'
+snapshot:
+  name_template: "{{ .Env.version }}-snapshot"
+changelog:
+  sort: asc

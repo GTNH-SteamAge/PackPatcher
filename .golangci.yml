@@ -1,0 +1,32 @@
+linters:
+  disable-all: true
+  enable:
+    - asasalint
+    - asciicheck
+    - bidichk
+    - bodyclose
+    - copyloopvar
+    - dogsled
+    - errcheck
+    - errname
+    - errorlint
+    - gocheckcompilerdirectives
+    - goprintffuncname
+    - gosimple
+    - govet
+    - ineffassign
+    - interfacebloat
+    - makezero
+    - nakedret
+    - nilerr
+    - nolintlint
+    - predeclared
+    - revive
+    - sqlclosecheck
+    - staticcheck
+    - tenv
+    - tparallel
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
