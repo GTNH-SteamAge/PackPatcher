@@ -10,12 +10,12 @@ GTNH Modpack Zip File Structure:
 
 Steam Age Patch Zip File Structure:
 ```
-|-- mods/                        # Assembled from the mod forks in the GTNH-SteamAge GitHub Organiztion
-|-- config/                      # Assembled from the GT-New-Horizons-Modpack repo fork, only a diff of changes
+|-- steamagemods/                 # Assembled from the mod forks in the GTNH-SteamAge GitHub Organiztion
+|-- steamageconfig/               # Assembled from the GT-New-Horizons-Modpack repo fork, only a diff of changes
     |-- betterquesting/
         |-- DefaultQuests/
-|-- README.md                    # Instructions on how to apply the Steam Age patch to the GTNH Modpack
-|-- Steam Age vX.Y.Z Changelog   # (Rough) Summary of changes in this Steam Age version
-|-- patch.sh                     # Shell patch script to apply to a pack version
-|-- patch.bat                    # Windows patch script to apply to a pack version
+|-- Steam_Age_README.md           # Instructions on how to apply the Steam Age patch to the GTNH Modpack
+|-- Steam_Age_vX.Y.Z_Changelog.md # (Rough) Summary of changes in this Steam Age version
+|-- steam_age_patch.sh            # Shell patch script to apply to a pack version
+|-- steam_age_patch.bat           # Windows patch script to apply to a pack version
 ```
