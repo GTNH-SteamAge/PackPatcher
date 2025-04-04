@@ -19,8 +19,8 @@ clean:
 
 .PHONY: deps
 deps:
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.61.0
-	go install github.com/goreleaser/goreleaser/v2@v2.3.2
+	go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.0.1
+	go install github.com/goreleaser/goreleaser/v2@v2.8.0
 
 .PHONY: lint
 lint:

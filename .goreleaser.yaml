@@ -56,19 +56,19 @@ nfpms:
       {{- .ConventionalExtension }}
 
 archives:
-  - format: tar.gz
+  - formats: [ 'tar.gz' ]
     name_template: >-
       {{ .ProjectName }}-{{ .Env.version }}-{{- tolower .Os }}-
       {{- if eq .Arch "amd64" }}x86_64{{- else }}{{ .Arch }}{{ end }}
     format_overrides:
       - goos: windows
-        format: zip
+        formats: [ 'zip' ]
       - goos: darwin
-        format: zip
+        formats: [ 'zip' ]
 
 checksum:
   name_template: '{{ .ProjectName }}-checksums.txt'
 snapshot:
-  name_template: "{{ .Env.version }}-snapshot"
+  version_template: "{{ .Env.version }}-snapshot"
 changelog:
   sort: asc

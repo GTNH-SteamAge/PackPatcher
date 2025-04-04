@@ -1,5 +1,6 @@
+version: "2"
 linters:
-  disable-all: true
+  default: none
   enable:
     - asasalint
     - asciicheck
@@ -12,21 +13,28 @@ linters:
     - errorlint
     - gocheckcompilerdirectives
     - goprintffuncname
-    - gosimple
     - govet
     - ineffassign
     - interfacebloat
+    - lll
     - makezero
     - nakedret
     - nilerr
     - nolintlint
+    - prealloc
     - predeclared
     - revive
     - sqlclosecheck
     - staticcheck
-    - tenv
     - tparallel
-    - typecheck
     - unconvert
     - unparam
     - unused
+    - usetesting
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
