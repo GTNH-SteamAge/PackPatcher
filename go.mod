@@ -1,13 +1,13 @@
 module github.com/GTNH-SteamAge/PackPatcher
 
-go 1.24
+go 1.24.0
 
 require (
 	github.com/go-git/go-git/v5 v5.14.0
 	github.com/google/go-github/v70 v70.0.0
 	go.uber.org/zap v1.27.0
 	golang.org/x/mod v0.24.0
-	golang.org/x/oauth2 v0.28.0
+	golang.org/x/oauth2 v0.32.0
 )
 
 require (
